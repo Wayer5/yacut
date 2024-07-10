@@ -15,11 +15,11 @@ def get_unique_short_id(long_url):
     return short_url
 
 
-def generate_unique_short_id(original_link):
-    """
-    Генерирует уникальный короткий идентификатор для оригинальной ссылки.
-    """
-    while True:
-        short_link = get_unique_short_id(original_link)
+def generate_unique_short_id(original_link, max_attempts=100):
+
+    attempts = 0
+    while attempts < max_attempts:
+        short_link = get_unique_short_id(original_link)[:LENGTH_LINK_DEAFULT]
         if not URLMap.query.filter_by(short=short_link).first():
             return short_link
+        attempts += 1

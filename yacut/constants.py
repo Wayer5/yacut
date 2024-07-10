@@ -11,3 +11,5 @@ LENGTH_ORIGINAL_LINK = 512
 
 LENGTH_LINK_DEAFULT = 6
 """Длина для ссылки по умолчанию — шесть случайных символов."""
+
+LENGTH_CUSTOM_ID = 16

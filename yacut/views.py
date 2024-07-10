@@ -4,6 +4,7 @@ from . import app, db
 from .forms import URLForm
 from .models import URLMap
 from .utils import generate_unique_short_id
+from .constants import LENGTH_CUSTOM_ID
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -15,7 +16,7 @@ def index():
     original_link = form.original_link.data
     custom_id = form.custom_id.data
 
-    if custom_id and len(custom_id) > 16:
+    if custom_id and len(custom_id) > LENGTH_CUSTOM_ID:
         flash('Слишком длинная ссылка.', 'error')
         return render_template('index.html', form=form), 200
 
